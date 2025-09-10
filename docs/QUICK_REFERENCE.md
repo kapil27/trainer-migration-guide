@@ -114,7 +114,7 @@ trainer:
 
 ### "ClusterTrainingRuntime not found"
 ```bash
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/runtimes --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai/runtimes --server-side=true
 ```
 
 ### Different resources per node

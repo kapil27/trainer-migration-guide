@@ -109,7 +109,7 @@ python3 tools/convert-pytorch.py --directory ./all-pytorch-jobs --output-dir ./c
 ### Q: "ClusterTrainingRuntime not found" error
 **A:** Install the base runtimes:
 ```bash
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/runtimes --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai/runtimes --server-side=true
 ```
 
 ### Q: TrainJob pods are not starting

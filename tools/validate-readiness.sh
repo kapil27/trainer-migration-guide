@@ -258,9 +258,9 @@ generate_recommendations() {
         echo ""
         echo "Recommended next steps:"
         echo "1. Install Kubeflow Trainer v2:"
-        echo "   kubectl apply -k https://github.com/kubeflow/trainer/manifests/rhoai --server-side=true"
+        echo "   kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai --server-side=true"
         echo "2. Install base runtimes:"
-        echo "   kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/runtimes --server-side=true"
+        echo "   kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai/runtimes --server-side=true"
         echo "3. Return to this validation script"
         
     elif [ "$v1_ready" = false ] && [ "$v2_ready" = true ]; then

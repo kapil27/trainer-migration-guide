@@ -50,13 +50,13 @@ kubectl get pytorchjobs --all-namespaces -o yaml > pytorch-jobs-backup.yaml
 #### Step 1.2: Install Trainer v2 Alongside v1
 ```bash
 # Install Trainer v2 CRDs
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/crds --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/base/crds --server-side=true
 
 # Install Trainer v2 operator in the same namespace as v1
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/rhoai --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai --server-side=true
 
 # Install base training runtimes
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/runtimes --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai/runtimes --server-side=true
 ```
 
 #### Step 1.3: Verify Both Operators Running
@@ -259,7 +259,7 @@ kubectl delete deployment kubeflow-training-operator -n opendatahub
 kubectl get clustertrainingruntime
 
 # Install missing runtimes
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/runtimes --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai/runtimes --server-side=true
 ```
 
 ### Issue: Different training results between v1 and v2

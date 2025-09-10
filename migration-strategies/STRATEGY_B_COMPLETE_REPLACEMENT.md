@@ -182,13 +182,13 @@ echo "v1 removal completed at: $(date)"
 #### Step 2.3: Install Trainer v2
 ```bash
 # Install Trainer v2 CRDs
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/crds --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/base/crds --server-side=true
 
 # Install Trainer v2 operator
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/rhoai --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai --server-side=true
 
 # Install training runtimes
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/runtimes --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai/runtimes --server-side=true
 
 # Verify installation
 kubectl get deployment -n opendatahub kubeflow-trainer-controller-manager
@@ -325,7 +325,7 @@ kubectl apply -f failed-job-fixed.yaml
 ### Issue: "ClusterTrainingRuntime not found"
 ```bash
 # Solution: Reinstall base runtimes
-kubectl apply -k https://github.com/kubeflow/trainer/manifests/base/runtimes --server-side=true
+kubectl apply -k {path_to_trainer}/trainer/manifests/rhoai/runtimes --server-side=true
 ```
 
 ### Issue: Trainer controller not starting
