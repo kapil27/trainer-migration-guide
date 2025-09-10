@@ -33,7 +33,8 @@ Thumbs.db
 customer-jobs/
 backup-*.yaml
 *-converted/
-test-*
+test-*.yaml
+test-*.json
 
 # Kubernetes artifacts
 *.kubeconfig
