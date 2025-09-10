@@ -1,0 +1,24 @@
+# TrainJob v2 equivalent of pytorch-simple-cpu v1 PyTorchJob
+apiVersion: trainer.kubeflow.org/v1alpha1
+kind: TrainJob
+metadata:
+  name: pytorch-simple-cpu-v2
+  namespace: opendatahub
+spec:
+  runtimeRef:
+    name: torch-distributed
+  trainer:
+    numNodes: 3  # 1 master + 2 workers = 3 total nodes
+    image: docker.io/kubeflowkatib/pytorch-mnist:v1beta1-45c5727
+    command:
+      - "python3"
+      - "/opt/pytorch-mnist/mnist.py"
+      - "--epochs=1"
+    # Resources per node
+    resourcesPerNode:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1
+        memory: 1Gi

@@ -1,0 +1,64 @@
+apiVersion: kubeflow.org/v1
+kind: PyTorchJob
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kubeflow.org/v1","kind":"PyTorchJob","metadata":{"annotations":{},"creationTimestamp":"2025-09-10T05:14:51Z","generation":1,"name":"pytorch-single-node","namespace":"opendatahub","resourceVersion":"5069325","uid":"51520393-2e51-445a-8bb7-8845532bcaf0"},"spec":{"pytorchReplicaSpecs":{"Master":{"replicas":1,"restartPolicy":"OnFailure","template":{"spec":{"containers":[{"command":["python3","/opt/pytorch-mnist/mnist.py","--epochs=1","--lr=0.01","--batch-size=64"],"env":[{"name":"PYTHONUNBUFFERED","value":"1"}],"image":"docker.io/kubeflowkatib/pytorch-mnist:v1beta1-45c5727","name":"pytorch","resources":{"limits":{"cpu":2,"memory":"2Gi"},"requests":{"cpu":1,"memory":"1Gi"}}}]}}}}},"status":{"completionTime":"2025-09-10T05:17:59Z","conditions":[{"lastTransitionTime":"2025-09-10T05:14:51Z","lastUpdateTime":"2025-09-10T05:14:51Z","message":"PyTorchJob pytorch-single-node is created.","reason":"PyTorchJobCreated","status":"True","type":"Created"},{"lastTransitionTime":"2025-09-10T05:15:13Z","lastUpdateTime":"2025-09-10T05:15:13Z","message":"PyTorchJob pytorch-single-node is running.","reason":"PyTorchJobRunning","status":"False","type":"Running"},{"lastTransitionTime":"2025-09-10T05:17:59Z","lastUpdateTime":"2025-09-10T05:17:59Z","message":"PyTorchJob pytorch-single-node is successfully completed.","reason":"PyTorchJobSucceeded","status":"True","type":"Succeeded"}],"replicaStatuses":{"Master":{"selector":"training.kubeflow.org/job-name=pytorch-single-node,training.kubeflow.org/operator-name=pytorchjob-controller,training.kubeflow.org/replica-type=master","succeeded":1}},"startTime":"2025-09-10T05:14:51Z"}}
+  creationTimestamp: "2025-09-10T05:14:51Z"
+  generation: 1
+  name: pytorch-single-node
+  namespace: opendatahub
+  resourceVersion: "5110158"
+  uid: 51520393-2e51-445a-8bb7-8845532bcaf0
+spec:
+  pytorchReplicaSpecs:
+    Master:
+      replicas: 1
+      restartPolicy: OnFailure
+      template:
+        spec:
+          containers:
+          - command:
+            - python3
+            - /opt/pytorch-mnist/mnist.py
+            - --epochs=1
+            - --lr=0.01
+            - --batch-size=64
+            env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
+            image: docker.io/kubeflowkatib/pytorch-mnist:v1beta1-45c5727
+            name: pytorch
+            resources:
+              limits:
+                cpu: 2
+                memory: 2Gi
+              requests:
+                cpu: 1
+                memory: 1Gi
+status:
+  completionTime: "2025-09-10T05:17:59Z"
+  conditions:
+  - lastTransitionTime: "2025-09-10T05:14:51Z"
+    lastUpdateTime: "2025-09-10T05:14:51Z"
+    message: PyTorchJob pytorch-single-node is created.
+    reason: PyTorchJobCreated
+    status: "True"
+    type: Created
+  - lastTransitionTime: "2025-09-10T05:15:13Z"
+    lastUpdateTime: "2025-09-10T05:15:13Z"
+    message: PyTorchJob pytorch-single-node is running.
+    reason: PyTorchJobRunning
+    status: "False"
+    type: Running
+  - lastTransitionTime: "2025-09-10T05:17:59Z"
+    lastUpdateTime: "2025-09-10T05:17:59Z"
+    message: PyTorchJob pytorch-single-node is successfully completed.
+    reason: PyTorchJobSucceeded
+    status: "True"
+    type: Succeeded
+  replicaStatuses:
+    Master:
+      selector: training.kubeflow.org/job-name=pytorch-single-node,training.kubeflow.org/operator-name=pytorchjob-controller,training.kubeflow.org/replica-type=master
+      succeeded: 1
+  startTime: "2025-09-10T05:14:51Z"

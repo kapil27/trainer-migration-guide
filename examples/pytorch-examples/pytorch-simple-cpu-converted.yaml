@@ -1,0 +1,22 @@
+apiVersion: trainer.kubeflow.org/v1alpha1
+kind: TrainJob
+metadata:
+  name: pytorch-simple-cpu
+  namespace: opendatahub
+spec:
+  runtimeRef:
+    name: torch-distributed
+  trainer:
+    command:
+    - python3
+    - /opt/pytorch-mnist/mnist.py
+    - --epochs=1
+    image: docker.io/kubeflowkatib/pytorch-mnist:v1beta1-45c5727
+    numNodes: 3
+    resourcesPerNode:
+      limits:
+        cpu: 1
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
